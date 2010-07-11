@@ -56,7 +56,7 @@ class plgSystemSimpleDownload extends JPlugin
 			$cipherfile			= $componentParams->get('cipherfile');
 			$cipherfunction		= $componentParams->get('cipherfunction');
 			
-			$plugin =& JPluginHelper::getPlugin('content', 'simpledownload');
+			$plugin =& JPluginHelper::getPlugin('system', 'simpledownload');
 			$pluginParams = new JParameter( $plugin->params );
 			$useCustomOutput = $pluginParams->get('useCustomOutput', '0');
 			$customOutputPattern = $pluginParams->get('customOutputPattern', '');
