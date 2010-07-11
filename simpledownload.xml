@@ -2,12 +2,12 @@
 <install version="1.5.0" type="plugin" group="system" method="upgrade">
 	<name>System - SimpleDownload Link Creator</name>
 	<author>Joel Rowley</author>
-	<creationDate>2010-07-10</creationDate>
+	<creationDate>2010-07-11</creationDate>
 	<copyright>Copyright (C) 2010 Joel Rowley. All rights reserved.</copyright>
 	<license>GNU General Public License</license>
 	<authorEmail>joel@joelrowley.com</authorEmail>
 	<authorUrl>http://joomla.joelrowley.com/</authorUrl>
-	<version>0.9.7</version>
+	<version>0.9.8</version>
 	<description>This plugin will search for tags on the website in the 
 	format of {simpledownload href=filePath}Text-To-Be-Displayed{/simpledownload} and replace them with the appropriate link
 	to the com_simpledownload component to force that file to be downloaded.</description>
