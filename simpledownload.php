@@ -70,6 +70,8 @@ class plgSystemSimpleDownload extends JPlugin
 			
 			for ($i=0; $i<count($matches[0]); ++$i) {
 				
+				$body = JResponse::getBody();
+				
 				if (preg_match('/{simpledownload href=(.*?)}/i', $matches[0][$i], $pathMatch) > 0) {
 					// get the path out of the plugin text
 					$path = $pathMatch[1];
