@@ -70,8 +70,6 @@ class plgSystemSimpleDownload extends JPlugin
 			
 			for ($i=0; $i<count($matches[0]); ++$i) {
 				
-				$body = JResponse::getBody();
-				
 				if (preg_match('/{simpledownload href=(.*?)}/i', $matches[0][$i], $pathMatch) > 0) {
 					// get the path out of the plugin text
 					$path = $pathMatch[1];
@@ -105,7 +103,13 @@ class plgSystemSimpleDownload extends JPlugin
 					$output = preg_replace('/\{fileid}/i', $path, $output);
 				}
 				
-				JResponse::setBody(str_replace($matches[0][$i], $output, $body ));
+				$body = str_replace('/'.$matches[0][$i], $output, $body );	// remove any places that have an
+																			// extra slash in front of the tag
+																			// that will confuse the browser.
+																			
+				$body = str_replace($matches[0][$i], $output, $body );
+				
+				JResponse::setBody($body);
 			}
 		}
 
