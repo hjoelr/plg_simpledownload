@@ -72,8 +72,8 @@ class plgSystemSimpleDownload extends JPlugin
 			for ($i=0; $i<count($matches[0]); ++$i) {
 				
 				if (preg_match('%\{simpledownload[ ]+href=([\'"]{0,1}([\d\w\-.\\\\ /&!]+)[\'"]{0,1})\}%', $matches[0][$i], $pathMatch) > 0
-						&& JComponentHelper::isEnabled('com_simpledownload', true)
-						&& $base_download_path != '') {
+						&& JComponentHelper::isEnabled('com_simpledownload', true) // make sure component is installed
+						&& $base_download_path != '') { // make sure component has been configured
 					
 					// get the path out of the plugin text
 					$path = trim($pathMatch[2]);
