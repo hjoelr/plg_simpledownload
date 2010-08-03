@@ -70,9 +70,11 @@ class plgSystemSimpleDownload extends JPlugin
 			
 			for ($i=0; $i<count($matches[0]); ++$i) {
 				
-				if (preg_match('/{simpledownload href=(.*?)}/i', $matches[0][$i], $pathMatch) > 0) {
+				if (preg_match('%\{simpledownload[ ]+href=([\'"]{0,1}([\d\w\-.\\\\ /&!]+)[\'"]{0,1})\}%', $matches[0][$i], $pathMatch) > 0) {
+					
 					// get the path out of the plugin text
-					$path = $pathMatch[1];
+					$path = trim($pathMatch[2]);
+					
 				} else {
 					// invalid markup, so just remove it altogether so it doesn't show up on the page.
 					JResponse::setBody(str_replace($matches[0][$i], "", $body ));
@@ -83,7 +85,8 @@ class plgSystemSimpleDownload extends JPlugin
 					$path = $cipherfunction($path);
 				}
 				
-				$link = JRoute::_('index.php?option=com_simpledownload&view=download&format=raw&fileid=' . $path);
+				//$link = JRoute::_('index.php?option=com_simpledownload&view=download&format=raw&fileid=' . $path);
+				$link = JRoute::_('index.php?option=com_simpledownload&task=download&fileid=' . $path);
 				
 				//<a href='$link'>$downloadTitle</a>
 				$downloadTitle = $matches[1][$i];
