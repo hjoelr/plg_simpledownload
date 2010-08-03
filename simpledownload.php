@@ -52,6 +52,7 @@ class plgSystemSimpleDownload extends JPlugin
 		if (preg_match_all($regexPattern, $body, $matches) > 0) {
 			
 			$componentParams	=& JComponentHelper::getParams( 'com_simpledownload' );
+			$base_download_path	= $componentParams->get('basedownloadpath', '');
 			$cipherenabled		= $componentParams->get('cipherenabled');
 			$cipherfile			= $componentParams->get('cipherfile');
 			$cipherfunction		= $componentParams->get('cipherfunction');
@@ -70,14 +71,18 @@ class plgSystemSimpleDownload extends JPlugin
 			
 			for ($i=0; $i<count($matches[0]); ++$i) {
 				
-				if (preg_match('%\{simpledownload[ ]+href=([\'"]{0,1}([\d\w\-.\\\\ /&!]+)[\'"]{0,1})\}%', $matches[0][$i], $pathMatch) > 0) {
+				if (preg_match('%\{simpledownload[ ]+href=([\'"]{0,1}([\d\w\-.\\\\ /&!]+)[\'"]{0,1})\}%', $matches[0][$i], $pathMatch) > 0
+						&& JComponentHelper::isEnabled('com_simpledownload', true)
+						&& $base_download_path != '') {
 					
 					// get the path out of the plugin text
 					$path = trim($pathMatch[2]);
 					
 				} else {
 					// invalid markup, so just remove it altogether so it doesn't show up on the page.
-					JResponse::setBody(str_replace($matches[0][$i], "", $body ));
+					$body = str_replace($matches[0][$i], "", $body );
+					
+					JResponse::setBody($body);
 					continue;
 				}
 				
