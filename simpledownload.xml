@@ -7,7 +7,7 @@
 	<license>GNU General Public License</license>
 	<authorEmail>joomlaextensions@joelrowley.com</authorEmail>
 	<authorUrl>http://joomla.joelrowley.com/</authorUrl>
-	<version>1.0.0</version>
+	<version>1.0.0-beta1</version>
 	<description>This plugin will search for tags on the website in the 
 	format of {simpledownload href=filePath}Text-To-Be-Displayed{/simpledownload} and replace them with the appropriate link
 	to the com_simpledownload component to force that file to be downloaded.  If the component is
