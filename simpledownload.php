@@ -90,8 +90,8 @@ class plgSystemSimpleDownload extends JPlugin
 					$path = $cipherfunction($path);
 				}
 				
-				//$link = JRoute::_('index.php?option=com_simpledownload&view=download&format=raw&fileid=' . $path);
-				$link = JRoute::_('index.php?option=com_simpledownload&task=download&fileid=' . $path);
+				$link = JRoute::_('index.php?option=com_simpledownload&view=download&format=raw&fileid=' . $path);
+				//$link = JRoute::_('index.php?option=com_simpledownload&task=download&fileid=' . $path);
 				
 				//<a href='$link'>$downloadTitle</a>
 				$downloadTitle = $matches[1][$i];
